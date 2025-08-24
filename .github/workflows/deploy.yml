@@ -2,7 +2,7 @@
 
 on:
   push:
-    branches: [ main ]  # ← デプロイ元ブランチ
+    branches: [ main ]
   workflow_dispatch:
 
 permissions:
@@ -30,14 +30,14 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9
+          version: 9 # 必要ならローカルと同じバージョンを指定
 
-      - name: Install
+      - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Build (export)
         env:
-          GITHUB_ACTIONS: 'true' # basePath/assetPrefix 用フラグ
+          GITHUB_ACTIONS: 'true'
         run: |
           pnpm build
           pnpm next export
