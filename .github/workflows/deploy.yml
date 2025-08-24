@@ -25,12 +25,18 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'
+          cache: 'pnpm'   # ← これは “キャッシュ方式” の指定です（pnpm本体は別で入れる）
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9 # 必要ならローカルと同じバージョンを指定
+          version: 9        # ローカルに合わせる（8 なら 8）
+          run_install: false
+
+      - name: Check pnpm
+        run: |
+          pnpm --version
+          which pnpm
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
