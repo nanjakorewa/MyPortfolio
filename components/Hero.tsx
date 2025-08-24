@@ -37,9 +37,7 @@
         <div className="relative aspect-video rounded-2xl bg-gradient-to-br from-accent/30 to-white/10 grid place-items-center text-lg opacity-90">
           Showcase Image
         </div>
-        <div className="mt-4 text-sm opacity-70">
-          最近の案件: テスト
-        </div>
+        <div className="mt-4 text-sm opacity-70">最近の案件: テスト</div>
       </div>
     </section>
   )
