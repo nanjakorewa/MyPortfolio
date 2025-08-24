@@ -25,16 +25,27 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'   # ← これは “キャッシュ方式” の指定です（pnpm本体は別で入れる）
+          cache: 'pnpm'   # 依存キャッシュに pnpm を使う指定（pnpm本体は別で入れる）
 
-      - name: Setup pnpm
+      - name: Setup pnpm (primary)
         uses: pnpm/action-setup@v4
         with:
-          version: 9        # ローカルに合わせる（8 なら 8）
+          version: 9
           run_install: false
 
-      - name: Check pnpm
+      # 予防線: 万一 pnpm が見つからない場合は corepack で有効化
+      - name: Fallback enable pnpm via corepack (if needed)
+        shell: bash
         run: |
+          if ! command -v pnpm >/dev/null 2>&1; then
+            echo "pnpm not found after pnpm/action-setup — enabling via corepack..."
+            corepack enable
+            corepack prepare pnpm@9 --activate
+          fi
+
+      - name: Check pnpm in PATH
+        run: |
+          echo "PATH=$PATH"
           pnpm --version
           which pnpm
 
