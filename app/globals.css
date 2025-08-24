@@ -1,0 +1,62 @@
+﻿@import 'tailwindcss';
+
+:root {
+  color-scheme: light;
+  --color-bg: #f7fafc; /* やわらかい白 */
+  --color-card: #ffffff;
+  --color-ink: #0f172a; /* slate-900 */
+  --color-muted: #475569; /* slate-600 */
+  --color-line: #e5e7eb; /* gray-200 */
+  --color-accent: #7c9cf5; /* ペールインディゴ */
+  --color-accent-2: #f59fb2; /* ペールローズ */
+  --color-accent-3: #7fe3c1; /* ペールミント */
+}
+.dark {
+  color-scheme: dark;
+  --color-bg: #0b1020; /* 藍黒 */
+  --color-card: #111827;
+  --color-ink: #e5e7eb;
+  --color-muted: #94a3b8;
+  --color-line: #1f2937;
+  --color-accent: #8aa4ff;
+  --color-accent-2: #ffadc3;
+  --color-accent-3: #8ff0cf;
+}
+@theme {
+  --color-bg: var(--color-bg);
+  --color-card: var(--color-card);
+  --color-ink: var(--color-ink);
+  --color-muted: var(--color-muted);
+  --color-line: var(--color-line);
+  --color-accent: var(--color-accent);
+  --color-accent-2: var(--color-accent-2);
+  --color-accent-3: var(--color-accent-3);
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  @apply bg-bg text-ink antialiased;
+}
+.a-like {
+  @apply underline underline-offset-4 decoration-[--color-line] hover:decoration-accent;
+}
+.btn-primary {
+  @apply px-4 py-2 rounded-2xl bg-[--color-accent] text-white font-medium shadow;
+}
+.btn-ghost {
+  @apply px-4 py-2 rounded-2xl border border-[--color-line] text-ink/80 hover:border-ink/30;
+}
+.card {
+  @apply rounded-3xl border border-[--color-line] bg-card/95 shadow-sm;
+}
+
+html,
+body,
+body * {
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease,
+    border-color 0.4s ease;
+}
