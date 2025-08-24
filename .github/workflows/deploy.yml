@@ -18,52 +18,22 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'   # 依存キャッシュに pnpm を使う指定（pnpm本体は別で入れる）
-
-      - name: Setup pnpm (primary)
-        uses: pnpm/action-setup@v4
+          cache: pnpm
+      - uses: pnpm/action-setup@v4
         with:
           version: 9
           run_install: false
-
-      # 予防線: 万一 pnpm が見つからない場合は corepack で有効化
-      - name: Fallback enable pnpm via corepack (if needed)
-        shell: bash
-        run: |
-          if ! command -v pnpm >/dev/null 2>&1; then
-            echo "pnpm not found after pnpm/action-setup — enabling via corepack..."
-            corepack enable
-            corepack prepare pnpm@9 --activate
-          fi
-
-      - name: Check pnpm in PATH
-        run: |
-          echo "PATH=$PATH"
-          pnpm --version
-          which pnpm
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Build (export)
-        env:
-          GITHUB_ACTIONS: 'true'
-        run: |
-          pnpm build
-          pnpm next export
-
+      - run: pnpm install --frozen-lockfile
+      - name: Build (static export via next build)
+        run: pnpm build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
-
+          path: .next/export
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -71,6 +41,5 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
+      - id: deployment
         uses: actions/deploy-pages@v4
