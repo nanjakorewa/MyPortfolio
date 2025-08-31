@@ -1,13 +1,15 @@
-"use client"
+'use client'
 
 import { projects } from '@/lib/projects'
 import { ProjectCard } from '@/components/ProjectCard'
 import { useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
 
 const CATEGORY_LABEL = {
-  web: 'WEBポートフォリオ',
-  hobby: '趣味の作品',
+  hobby: '趣味',
   study: '学習',
+  web: 'WEB',
+  others: 'その他',
 } as const
 type CatKey = keyof typeof CATEGORY_LABEL
 
@@ -39,6 +41,14 @@ function Tabs({ active }: { active: 'all' | CatKey }) {
 }
 
 export default function ProjectsPage() {
+  return (
+    <Suspense fallback={<div className="mt-4 text-[--color-muted]">Loading...</div>}>
+      <ProjectsContent />
+    </Suspense>
+  )
+}
+
+function ProjectsContent() {
   const sp = useSearchParams()
   const raw = (sp.get('category') ?? 'all').toLowerCase()
 
@@ -100,4 +110,3 @@ export default function ProjectsPage() {
     </section>
   )
 }
-
