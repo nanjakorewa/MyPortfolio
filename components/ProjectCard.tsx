@@ -1,6 +1,7 @@
 ﻿'use client'
 
 import { useCallback, useRef } from 'react'
+import { withBasePath } from '@/lib/url'
 
 export type Project = {
   title: string
@@ -44,7 +45,7 @@ export function ProjectCard({ project }: { project: Project }) {
       <div className="aspect-video rounded-xl bg-[rgba(0,0,0,.04)] dark:bg-white/5 mb-4 grid place-items-center text-sm opacity-70 overflow-hidden">
         {project.image ? (
           <img
-            src={project.image}
+            src={withBasePath(project.image)}
             alt=""
             className="w-full h-full object-cover rounded-xl group-hover:scale-105 transition"
           />

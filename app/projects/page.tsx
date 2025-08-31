@@ -4,6 +4,7 @@ import { projects } from '@/lib/projects'
 import { ProjectCard } from '@/components/ProjectCard'
 import { useSearchParams } from 'next/navigation'
 import { Suspense } from 'react'
+import { withBasePath } from '@/lib/url'
 
 const CATEGORY_LABEL = {
   hobby: '趣味',
@@ -15,11 +16,11 @@ type CatKey = keyof typeof CATEGORY_LABEL
 
 function Tabs({ active }: { active: 'all' | CatKey }) {
   const tabs: Array<{ key: 'all' | CatKey; label: string; href: string }> = [
-    { key: 'all', label: 'すべて', href: '/projects' },
-    { key: 'web', label: CATEGORY_LABEL.web, href: '/projects?category=web' },
-    { key: 'hobby', label: CATEGORY_LABEL.hobby, href: '/projects?category=hobby' },
-    { key: 'study', label: CATEGORY_LABEL.study, href: '/projects?category=study' },
-    { key: 'others', label: CATEGORY_LABEL.others, href: '/projects?category=others' },
+    { key: 'all', label: 'すべて', href: withBasePath('/projects') },
+    { key: 'web', label: CATEGORY_LABEL.web, href: withBasePath('/projects?category=web') },
+    { key: 'hobby', label: CATEGORY_LABEL.hobby, href: withBasePath('/projects?category=hobby') },
+    { key: 'study', label: CATEGORY_LABEL.study, href: withBasePath('/projects?category=study') },
+    { key: 'others', label: CATEGORY_LABEL.others, href: withBasePath('/projects?category=others') },
   ]
   return (
     <div className="flex flex-wrap gap-2 mt-4">
@@ -79,7 +80,7 @@ function ProjectsContent() {
                     {CATEGORY_LABEL[cat]}
                     <span className="ml-2 text-sm text-[--color-muted]">({list.length})</span>
                   </h2>
-                  <a className="a-like text-sm" href={`/projects?category=${cat}`}>
+                  <a className="a-like text-sm" href={withBasePath(`/projects?category=${cat}`)}>
                     このカテゴリのみ表示
                   </a>
                 </div>
@@ -99,7 +100,7 @@ function ProjectsContent() {
               {CATEGORY_LABEL[active]}
               <span className="ml-2 text-sm text-[--color-muted]">({filtered.length})</span>
             </h2>
-            <a className="a-like text-sm" href="/projects">
+            <a className="a-like text-sm" href={withBasePath('/projects')}>
               すべてに戻る
             </a>
           </div>

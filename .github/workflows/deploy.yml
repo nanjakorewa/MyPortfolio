@@ -53,6 +53,8 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - name: Build (static export via next build)
         run: pnpm build
+        env:
+          NEXT_PUBLIC_BASE_PATH: /MyPortfolio
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
