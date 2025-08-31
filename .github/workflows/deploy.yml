@@ -56,7 +56,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .next/export
+          # Next.js static export output directory
+          path: ./out
   deploy:
     needs: build
     runs-on: ubuntu-latest

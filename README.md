@@ -34,3 +34,28 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Deploy (GitHub Pages)
+
+このリポジトリは GitHub Actions で GitHub Pages に静的エクスポートをデプロイできます。
+
+- ワークフロー: `.github/workflows/deploy.yml`
+- ビルド: `pnpm build`（Next.js `output: 'export'`）→ 出力は `./out`
+- トリガー: `main` ブランチへの push または手動実行（Actions タブから）
+
+手順
+1. リポジトリ Settings → Pages → Source を「GitHub Actions」に設定。
+2. `main` に push すると自動でビルド・デプロイされます。
+3. 初回のみ Actions タブで「Deploy to GitHub Pages」を手動実行してもOKです。
+
+ローカル確認
+- `pnpm install && pnpm build` で `out/` が生成されます。
+- `npx serve out -p 4173` などで静的サイトを確認できます。
+
+ベースパスについて
+- `next.config.ts` は GitHub Actions 上で `GITHUB_REPOSITORY` からリポジトリ名を検出します。
+- プロジェクトページ（`user.github.io/<repo>`）では `basePath`/`assetPrefix` を `/<repo>` に自動設定。
+- ユーザー/Org サイト（`user.github.io`）では自動で無効化されます。
+
+カスタムドメイン
+- `public/CNAME` にドメイン名を配置し、Pages 設定でも CNAME を登録してください。

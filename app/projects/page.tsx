@@ -1,14 +1,15 @@
-﻿import { projects } from '@/lib/projects'
+"use client"
+
+import { projects } from '@/lib/projects'
 import { ProjectCard } from '@/components/ProjectCard'
+import { useSearchParams } from 'next/navigation'
 
 const CATEGORY_LABEL = {
-  web: 'WEB系アプリ',
-  hobby: '趣味の調査',
-  study: '勉強',
+  web: 'WEBポートフォリオ',
+  hobby: '趣味の作品',
+  study: '学習',
 } as const
 type CatKey = keyof typeof CATEGORY_LABEL
-
-type SearchParams = Record<string, string | string[] | undefined>
 
 function Tabs({ active }: { active: 'all' | CatKey }) {
   const tabs: Array<{ key: 'all' | CatKey; label: string; href: string }> = [
@@ -37,18 +38,9 @@ function Tabs({ active }: { active: 'all' | CatKey }) {
   )
 }
 
-export default async function ProjectsPage({
-  searchParams,
-}: {
-  // ★ v15 仕様：Promise で受け取る
-  searchParams: Promise<SearchParams>
-}) {
-  // Promise を解決
-  const params = await searchParams
-
-  // category は string | string[] | undefined の可能性があるため正規化
-  const catParam = Array.isArray(params.category) ? params.category[0] : params.category
-  const raw = (catParam ?? 'all').toLowerCase()
+export default function ProjectsPage() {
+  const sp = useSearchParams()
+  const raw = (sp.get('category') ?? 'all').toLowerCase()
 
   const active: 'all' | CatKey = (['web', 'hobby', 'study'] as const).includes(raw as CatKey)
     ? (raw as CatKey)
@@ -59,7 +51,7 @@ export default async function ProjectsPage({
   return (
     <section>
       <h1 className="text-3xl font-bold">Projects</h1>
-      <p className="opacity-80 mt-2">ジャンルで絞り込みできます。</p>
+      <p className="opacity-80 mt-2">カテゴリーで絞り込みできます。</p>
       <Tabs active={active} />
 
       {active === 'all' ? (
@@ -75,7 +67,7 @@ export default async function ProjectsPage({
                     <span className="ml-2 text-sm text-[--color-muted]">({list.length})</span>
                   </h2>
                   <a className="a-like text-sm" href={`/projects?category=${cat}`}>
-                    このカテゴリだけ見る →
+                    このカテゴリのみ表示
                   </a>
                 </div>
                 <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -95,7 +87,7 @@ export default async function ProjectsPage({
               <span className="ml-2 text-sm text-[--color-muted]">({filtered.length})</span>
             </h2>
             <a className="a-like text-sm" href="/projects">
-              すべて表示に戻る
+              すべてに戻る
             </a>
           </div>
           <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -108,3 +100,4 @@ export default async function ProjectsPage({
     </section>
   )
 }
+
