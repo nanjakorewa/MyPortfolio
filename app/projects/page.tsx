@@ -52,7 +52,9 @@ function ProjectsContent() {
   const sp = useSearchParams()
   const raw = (sp.get('category') ?? 'all').toLowerCase()
 
-  const active: 'all' | CatKey = (['web', 'hobby', 'study'] as const).includes(raw as CatKey)
+  const active: 'all' | CatKey = (['web', 'hobby', 'study', 'others'] as const).includes(
+    raw as CatKey
+  )
     ? (raw as CatKey)
     : 'all'
 
