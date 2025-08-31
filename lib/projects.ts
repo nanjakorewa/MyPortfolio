@@ -2,9 +2,9 @@
 
 export const projects: Project[] = [
   {
-    title: 'GeoGuessrのメモ',
+    title: 'GeoGuessrのめも',
     description: '2023年はじめから不定期に更新しているジオゲッサーのプレイログです。',
-    href: 'https://example.com/geoguessr',
+    href: 'https://geopinning.space/rule/',
     tags: ['HTML', 'Game', 'Research'],
     category: 'hobby',
     image: '/thumbnails/geopinning.png',
@@ -17,7 +17,7 @@ export const projects: Project[] = [
     category: 'hobby',
   },
   {
-    title: '生活に関するメモ',
+    title: '生活に関するめも',
     description: '2020年頃から不定期更新している経済関係のブログ。',
     href: 'https://paper-log.hatenadiary.jp/',
     tags: ['Blog'],
@@ -32,7 +32,7 @@ export const projects: Project[] = [
     image: '/thumbnails/k_dm.png',
   },
   {
-    title: '機械学習のメモ帳',
+    title: '機械学習のめも帳',
     description: '2018年頃に作成した自習用ウェブサイト。',
     href: 'https://k-dm.work/',
     tags: ['Machine Learning', 'Study', 'Python'],
