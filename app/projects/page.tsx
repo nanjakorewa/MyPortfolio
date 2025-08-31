@@ -19,6 +19,7 @@ function Tabs({ active }: { active: 'all' | CatKey }) {
     { key: 'web', label: CATEGORY_LABEL.web, href: '/projects?category=web' },
     { key: 'hobby', label: CATEGORY_LABEL.hobby, href: '/projects?category=hobby' },
     { key: 'study', label: CATEGORY_LABEL.study, href: '/projects?category=study' },
+    { key: 'others', label: CATEGORY_LABEL.others, href: '/projects?category=others' },
   ]
   return (
     <div className="flex flex-wrap gap-2 mt-4">

@@ -8,7 +8,7 @@ export type Project = {
   href: string
   tags: string[]
   image?: string
-  category: 'web' | 'hobby' | 'study'
+  category: 'web' | 'hobby' | 'study' | 'others'
 }
 
 export function ProjectCard({ project }: { project: Project }) {
