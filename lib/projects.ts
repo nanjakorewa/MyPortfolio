@@ -15,6 +15,7 @@ export const projects: Project[] = [
     href: 'https://paper.hatenadiary.jp/',
     tags: ['Blog'],
     category: 'hobby',
+    image: '/thumbnails/memo-main.png',
   },
   {
     title: '生活に関するめも',
@@ -22,6 +23,7 @@ export const projects: Project[] = [
     href: 'https://paper-log.hatenadiary.jp/',
     tags: ['Blog'],
     category: 'hobby',
+    image: '/thumbnails/memo-ec.png',
   },
   {
     title: 'K_DM',
@@ -37,6 +39,7 @@ export const projects: Project[] = [
     href: 'https://k-dm.work/',
     tags: ['Machine Learning', 'Study', 'Python'],
     category: 'study',
+    image: '/thumbnails/memo-ml.png',
   },
   {
     title: 'MK8DX6v6(交流戦)即時集計',
@@ -45,5 +48,29 @@ export const projects: Project[] = [
     tags: ['Game'],
     category: 'others',
     image: '/thumbnails/mk8d.png',
+  },
+  {
+    title: 'Twitch',
+    description: '不定期でゲーム配信しています。',
+    href: 'https://www.twitch.tv/nanjakorewa',
+    tags: ['Streaming'],
+    category: 'hobby',
+    image: '/thumbnails/twitch.png',
+  },
+  {
+    title: 'Youtube',
+    description: '不定期で動画投稿しています。',
+    href: 'https://www.youtube.com/@nanjakorewa',
+    tags: ['Streaming'],
+    category: 'hobby',
+    image: '/thumbnails/youtube.png',
+  },
+  {
+    title: 'X',
+    description: 'Xメインアカウント。',
+    href: 'https://x.com/nanjakorewa',
+    tags: ['daily'],
+    category: 'hobby',
+    image: '/thumbnails/x.png',
   },
 ]

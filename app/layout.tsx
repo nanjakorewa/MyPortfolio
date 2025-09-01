@@ -9,11 +9,11 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Portfolio | nanjakorewa',
   description: 'Developer & Designer Portfolio',
-  metadataBase: new URL('https://example.com'),
+  metadataBase: new URL('https://nanjakorewa.github.io/MyPortfolio/projects/'),
   openGraph: {
     title: 'Portfolio | nanjakorewa',
     description: 'Developer & Designer Portfolio',
-    url: 'https://example.com',
+    url: 'https://nanjakorewa.github.io/MyPortfolio/projects/',
     siteName: 'Portfolio',
     type: 'website',
   },
@@ -45,13 +45,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 nanjakorewa
               </a>
               <div className="flex items-center gap-6 text-sm">
-                <a href="/projects" className="opacity-80 hover:opacity-100">
+                <a href="../projects" className="opacity-80 hover:opacity-100">
                   Projects
                 </a>
-                <a href="/about" className="opacity-80 hover:opacity-100">
+                <a href="../about" className="opacity-80 hover:opacity-100">
                   About
                 </a>
-                <a href="/contact" className="opacity-80 hover:opacity-100">
+                <a href="../contact" className="opacity-80 hover:opacity-100">
                   Contact
                 </a>
                 <ThemeToggle />

@@ -2,9 +2,9 @@
   return (
     <section className="prose prose-invert max-w-none">
       <h1>About</h1>
-      <p>テスト</p>
+      <p>趣味アカウント@関西</p>
       <ul>
-        <li>得意: Next.js / Tailwind / AWS / Python / MLflow</li>
+        <li>にゃんぱす+Nst+BMz@mk8d</li>
       </ul>
     </section>
   )
