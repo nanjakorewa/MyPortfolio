@@ -1,19 +1,19 @@
 ﻿export default function Hero() {
   return (
-    <section className="grid md:grid-cols-2 gap-10 items-center">
+    <section className="grid md:grid-cols-2 gap-12 items-center py-8">
       <div className="space-y-6">
-        <p className="text-sm uppercase tracking-widest opacity-70">Developer · Designer</p>
-        <h1 className="text-5xl md:text-6xl font-extrabold leading-[1.1]">
-          <span className="bg-clip-text text-transparent bg-gradient-to-br from-white to-accent">
+        <p className="text-sm uppercase tracking-widest text-[--color-muted]">Developer · Designer</p>
+        <h1 className="text-4xl md:text-5xl font-bold leading-[1.15] text-[--color-ink]">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-[--color-accent] via-[--color-accent-2] to-[--color-accent-3]">
             Crafting clean UI
           </span>
           <br />
-          and reliable data apps
+          <span className="text-[--color-ink]/90">and reliable data apps</span>
         </h1>
-        <p className="opacity-85 text-lg">
-          フロントエンド、データ可視化、MLOps まで。高速・アクセシブルな体験を届けます。
+        <p className="text-[--color-muted] text-lg leading-relaxed">
+          フロントエンド、データ可視化、MLOpsまで。高速・アクセシブルな体験を届けます。
         </p>
-        <div className="flex gap-3">
+        <div className="flex gap-4">
           <a href="/projects" className="btn-primary">
             View Projects
           </a>
@@ -21,23 +21,23 @@
             Contact
           </a>
         </div>
-        <ul className="flex flex-wrap gap-2 text-xs opacity-80">
+        <ul className="flex flex-wrap gap-2 text-xs">
           {['Next.js', 'TypeScript', 'Tailwind', 'Python', 'MLflow', 'AWS'].map((s) => (
-            <li key={s} className="px-2 py-1 rounded-full border border-white/10 bg-white/5">
+            <li key={s} className="px-3 py-1.5 rounded-full bg-[--color-line]/40 text-[--color-muted]">
               {s}
             </li>
           ))}
         </ul>
       </div>
-      <div className="rounded-3xl bg-card p-6 border border-white/10 relative overflow-hidden group">
+      <div className="rounded-3xl bg-card/60 backdrop-blur-sm p-6 border border-[--color-line]/50 relative overflow-hidden group">
         <div
-          className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-accent/20 to-white/5 blur-2xl"
+          className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-[--color-accent-3]/20 via-[--color-accent-5]/20 to-[--color-accent-2]/20 blur-3xl opacity-60"
           aria-hidden
         />
-        <div className="relative aspect-video rounded-2xl bg-gradient-to-br from-accent/30 to-white/10 grid place-items-center text-lg opacity-90">
+        <div className="relative aspect-video rounded-2xl bg-gradient-to-br from-[--color-line]/40 to-[--color-line]/20 grid place-items-center text-[--color-muted]">
           Showcase Image
         </div>
-        <div className="mt-4 text-sm opacity-70">最近の案件: テスト</div>
+        <div className="mt-4 text-sm text-[--color-muted]">最近の案件: テスト</div>
       </div>
     </section>
   )

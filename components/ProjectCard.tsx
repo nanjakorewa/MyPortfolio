@@ -34,41 +34,56 @@ export function ProjectCard({ project }: { project: Project }) {
       ref={ref}
       href={project.href}
       onPointerMove={onPointerMove}
-      className="group block rounded-2xl border border-[--color-line] bg-card hover:border-[--color-accent] transition p-5 relative overflow-hidden"
+      className="group block bg-white dark:bg-[--color-card] rounded-2xl border border-[#eee] dark:border-[--color-line]/30 p-6 relative overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-black/5 hover:-translate-y-1"
     >
-      {/* hover ライト（CSS 変数で位置を与える） */}
+      {/* グラデーションアクセント（上部） */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition 
-                   bg-[radial-gradient(200px_200px_at_var(--x,50%)_var(--y,50%),rgba(124,156,245,.18),transparent)]"
+        className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#3d7a9e] via-[#ffc857] to-[#e85d75] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
       />
-      <div className="aspect-video rounded-xl bg-[rgba(0,0,0,.04)] dark:bg-white/5 mb-4 grid place-items-center text-sm opacity-70 overflow-hidden">
+
+      {/* 画像エリア */}
+      <div className="aspect-[4/3] rounded-xl bg-[#f5f5f5] dark:bg-[--color-line]/20 mb-5 overflow-hidden">
         {project.image ? (
           <img
             src={withBasePath(project.image)}
             alt=""
-            className="w-full h-full object-cover rounded-xl group-hover:scale-105 transition"
+            className="w-full h-full object-cover group-hover:scale-107 transition-transform duration-700 ease-out"
           />
         ) : (
-          'Thumbnail'
+          <div className="w-full h-full grid place-items-center text-sm text-[--color-muted]">
+            Thumbnail
+          </div>
         )}
       </div>
-      <div className="flex items-center justify-between gap-4">
-        <h3 className="text-lg font-semibold group-hover:text-[--color-accent] transition">
-          {project.title}
-        </h3>
-        <div className="flex gap-2 text-xs text-[--color-muted] max-w-[50%] justify-end flex-wrap">
-          {project.tags.map((t) => (
-            <span
-              key={t}
-              className="px-2 py-1 rounded-full border border-[--color-line] bg-card/70"
-            >
-              {t}
-            </span>
-          ))}
-        </div>
+
+      {/* タグ */}
+      <div className="flex gap-2 flex-wrap mb-3">
+        {project.tags.map((t) => (
+          <span
+            key={t}
+            className="text-xs px-3 py-1 rounded-full bg-[#f5f5f5] dark:bg-[--color-line]/30 text-[--color-muted] font-medium"
+          >
+            {t}
+          </span>
+        ))}
       </div>
-      <p className="mt-2 text-sm text-[--color-muted]">{project.description}</p>
+
+      {/* タイトル */}
+      <h3 className="text-lg font-bold text-[--color-ink] group-hover:text-[--color-accent] transition-colors duration-300 mb-2">
+        {project.title}
+      </h3>
+
+      {/* 説明 */}
+      <p className="text-sm text-[--color-muted] leading-relaxed line-clamp-2">{project.description}</p>
+
+      {/* 矢印アイコン */}
+      <div className="mt-4 flex items-center text-[--color-accent] text-sm font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-0 group-hover:translate-x-1">
+        View Project
+        <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+      </div>
     </a>
   )
 }

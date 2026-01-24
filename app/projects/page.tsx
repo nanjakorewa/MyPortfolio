@@ -29,10 +29,10 @@ function Tabs({ active }: { active: 'all' | CatKey }) {
           key={t.key}
           href={t.href}
           className={[
-            'px-3 py-1.5 rounded-full border text-sm',
+            'px-4 py-2 rounded-full text-sm font-medium transition-all',
             active === t.key
-              ? 'border-[--color-accent] text-[--color-accent] bg-card'
-              : 'border-[--color-line] text-[--color-muted] hover:border-[--color-accent]',
+              ? 'bg-[--color-accent] text-white shadow-md shadow-[--color-accent]/20'
+              : 'bg-[--color-line]/30 text-[--color-muted] hover:bg-[--color-line]/50 hover:text-[--color-ink]',
           ].join(' ')}
         >
           {t.label}
@@ -64,27 +64,35 @@ function ProjectsContent() {
 
   return (
     <section>
-      <h1 className="text-3xl font-bold">Projects</h1>
-      <p className="opacity-80 mt-2">カテゴリーで絞り込みできます。</p>
+      <div className="mb-8">
+        <h1 className="text-4xl font-bold tracking-tight">Projects</h1>
+        <p className="text-[--color-muted] mt-3 text-lg">カテゴリーで絞り込みできます。</p>
+      </div>
       <Tabs active={active} />
 
       {active === 'all' ? (
-        <div className="space-y-12 mt-8">
+        <div className="space-y-16 mt-10">
           {(Object.keys(CATEGORY_LABEL) as CatKey[]).map((cat) => {
             const list = projects.filter((p) => p.category === cat)
             if (!list.length) return null
             return (
               <div key={cat}>
-                <div className="flex items-end justify-between gap-4">
-                  <h2 className="text-2xl font-semibold">
-                    {CATEGORY_LABEL[cat]}
-                    <span className="ml-2 text-sm text-[--color-muted]">({list.length})</span>
-                  </h2>
-                  <a className="a-like text-sm" href={withBasePath(`/projects?category=${cat}`)}>
-                    このカテゴリのみ表示
+                <div className="flex items-center justify-between gap-4 mb-8">
+                  <div className="flex items-center gap-4">
+                    <div className="w-1 h-8 rounded-full bg-gradient-to-b from-[--color-accent] to-[--color-accent-2]" />
+                    <h2 className="text-2xl font-bold tracking-tight">
+                      {CATEGORY_LABEL[cat]}
+                      <span className="ml-3 text-base font-normal text-[--color-muted]">{list.length} projects</span>
+                    </h2>
+                  </div>
+                  <a
+                    className="text-sm text-[--color-accent] hover:underline underline-offset-4 font-medium"
+                    href={withBasePath(`/projects?category=${cat}`)}
+                  >
+                    View all →
                   </a>
                 </div>
-                <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                   {list.map((p) => (
                     <ProjectCard key={p.title} project={p} />
                   ))}
@@ -94,17 +102,23 @@ function ProjectsContent() {
           })}
         </div>
       ) : (
-        <div className="mt-8">
-          <div className="flex items-end justify-between gap-4">
-            <h2 className="text-2xl font-semibold">
-              {CATEGORY_LABEL[active]}
-              <span className="ml-2 text-sm text-[--color-muted]">({filtered.length})</span>
-            </h2>
-            <a className="a-like text-sm" href={withBasePath('/projects')}>
-              すべてに戻る
+        <div className="mt-10">
+          <div className="flex items-center justify-between gap-4 mb-8">
+            <div className="flex items-center gap-4">
+              <div className="w-1 h-8 rounded-full bg-gradient-to-b from-[--color-accent] to-[--color-accent-2]" />
+              <h2 className="text-2xl font-bold tracking-tight">
+                {CATEGORY_LABEL[active]}
+                <span className="ml-3 text-base font-normal text-[--color-muted]">{filtered.length} projects</span>
+              </h2>
+            </div>
+            <a
+              className="text-sm text-[--color-accent] hover:underline underline-offset-4 font-medium"
+              href={withBasePath('/projects')}
+            >
+              ← Back to all
             </a>
           </div>
-          <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {filtered.map((p) => (
               <ProjectCard key={p.title} project={p} />
             ))}

@@ -2,25 +2,29 @@
 
 :root {
   color-scheme: light;
-  --color-bg: #f7fafc; /* やわらかい白 */
+  --color-bg: #f7f7f5;
   --color-card: #ffffff;
-  --color-ink: #0f172a; /* slate-900 */
-  --color-muted: #475569; /* slate-600 */
-  --color-line: #e5e7eb; /* gray-200 */
-  --color-accent: #7c9cf5; /* ペールインディゴ */
-  --color-accent-2: #f59fb2; /* ペールローズ */
-  --color-accent-3: #7fe3c1; /* ペールミント */
+  --color-ink: #2d3748;
+  --color-muted: #718096;
+  --color-line: #e8e8e4;
+  --color-accent: #3d7a9e;
+  --color-accent-2: #e85d75;
+  --color-accent-3: #b8d86b;
+  --color-accent-4: #f4a261;
+  --color-accent-5: #ffc857;
 }
 .dark {
   color-scheme: dark;
-  --color-bg: #0b1020; /* 藍黒 */
-  --color-card: #111827;
-  --color-ink: #e5e7eb;
-  --color-muted: #94a3b8;
-  --color-line: #1f2937;
-  --color-accent: #8aa4ff;
-  --color-accent-2: #ffadc3;
-  --color-accent-3: #8ff0cf;
+  --color-bg: #1a1f2e;
+  --color-card: #242938;
+  --color-ink: #e8e8e4;
+  --color-muted: #a0aec0;
+  --color-line: #3d4556;
+  --color-accent: #5a9fc7;
+  --color-accent-2: #f07a8e;
+  --color-accent-3: #c8e87b;
+  --color-accent-4: #f5b07a;
+  --color-accent-5: #ffd570;
 }
 @theme {
   --color-bg: var(--color-bg);
@@ -31,6 +35,8 @@
   --color-accent: var(--color-accent);
   --color-accent-2: var(--color-accent-2);
   --color-accent-3: var(--color-accent-3);
+  --color-accent-4: var(--color-accent-4);
+  --color-accent-5: var(--color-accent-5);
 }
 html,
 body {
@@ -40,16 +46,16 @@ body {
   @apply bg-bg text-ink antialiased;
 }
 .a-like {
-  @apply underline underline-offset-4 decoration-[--color-line] hover:decoration-accent;
+  @apply underline underline-offset-4 decoration-[--color-line]/50 hover:decoration-[--color-accent] transition-colors;
 }
 .btn-primary {
-  @apply px-4 py-2 rounded-2xl bg-[--color-accent] text-white font-medium shadow;
+  @apply px-5 py-2.5 rounded-full bg-[--color-accent] text-white font-medium shadow-md shadow-[--color-accent]/20 hover:shadow-lg hover:shadow-[--color-accent]/30 hover:brightness-110 transition-all;
 }
 .btn-ghost {
-  @apply px-4 py-2 rounded-2xl border border-[--color-line] text-ink/80 hover:border-ink/30;
+  @apply px-5 py-2.5 rounded-full border border-[--color-line] text-[--color-muted] hover:text-[--color-ink] hover:border-[--color-accent]/50 transition-all;
 }
 .card {
-  @apply rounded-3xl border border-[--color-line] bg-card/95 shadow-sm;
+  @apply rounded-3xl border border-[--color-line]/50 bg-card/80 backdrop-blur-sm;
 }
 
 html,
@@ -60,3 +66,41 @@ body * {
     color 0.4s ease,
     border-color 0.4s ease;
 }
+
+/* 背景ブロブのフワフワアニメーション */
+@keyframes float1 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(30px, -20px) rotate(5deg); }
+  50% { transform: translate(-20px, 30px) rotate(-3deg); }
+  75% { transform: translate(20px, 20px) rotate(3deg); }
+}
+@keyframes float2 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(-25px, 25px) rotate(-5deg); }
+  50% { transform: translate(30px, -15px) rotate(4deg); }
+  75% { transform: translate(-15px, -25px) rotate(-2deg); }
+}
+@keyframes float3 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(20px, 30px) rotate(3deg); }
+  50% { transform: translate(-30px, -20px) rotate(-4deg); }
+  75% { transform: translate(25px, -15px) rotate(2deg); }
+}
+@keyframes float4 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(-20px, -30px) rotate(-3deg); }
+  50% { transform: translate(25px, 20px) rotate(5deg); }
+  75% { transform: translate(-30px, 15px) rotate(-4deg); }
+}
+@keyframes float5 {
+  0%, 100% { transform: translate(-50%, 0) rotate(0deg); }
+  25% { transform: translate(calc(-50% + 25px), -25px) rotate(4deg); }
+  50% { transform: translate(calc(-50% - 20px), 30px) rotate(-3deg); }
+  75% { transform: translate(calc(-50% + 15px), 20px) rotate(2deg); }
+}
+
+.blob-1 { animation: float1 25s ease-in-out infinite; }
+.blob-2 { animation: float2 28s ease-in-out infinite; }
+.blob-3 { animation: float3 22s ease-in-out infinite; }
+.blob-4 { animation: float4 30s ease-in-out infinite; }
+.blob-5 { animation: float5 26s ease-in-out infinite; }

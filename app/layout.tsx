@@ -25,33 +25,49 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ja" suppressHydrationWarning>
       <body className={`${inter.className} min-h-screen relative overflow-x-hidden`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {/* 背景エフェクト */}
-          <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+          {/* 背景ブロブ装飾 */}
+          <div aria-hidden className="pointer-events-none fixed inset-0 overflow-hidden" style={{ zIndex: -1 }}>
+            {/* イエローグリーン - 左上 */}
             <div
-              className="absolute -top-40 left-1/2 h-[60rem] w-[60rem] -translate-x-1/2 rounded-full 
-              bg-[radial-gradient(closest-side,var(--color-accent)/25,transparent)] blur-2xl"
+              className="blob-1 absolute -top-10 -left-10 h-96 w-96 rounded-[40%_60%_70%_30%/40%_50%_60%_50%]"
+              style={{ backgroundColor: '#b8d86b', opacity: 0.35 }}
             />
+            {/* ピンク - 左下 */}
             <div
-              className="absolute inset-0 
-              bg-[linear-gradient(to_right,transparent_95%,rgba(0,0,0,.03)_95%),linear-gradient(to_bottom,transparent_95%,rgba(0,0,0,.03)_95%)] 
-              bg-[length:24px_24px]"
+              className="blob-2 absolute bottom-10 left-10 h-80 w-80 rounded-[60%_40%_30%_70%/60%_30%_70%_40%]"
+              style={{ backgroundColor: '#e85d75', opacity: 0.3 }}
+            />
+            {/* ブルー - 右上 */}
+            <div
+              className="blob-3 absolute top-20 right-10 h-80 w-80 rounded-[30%_70%_70%_30%/30%_30%_70%_70%]"
+              style={{ backgroundColor: '#3d7a9e', opacity: 0.25 }}
+            />
+            {/* コーラル - 右中央 */}
+            <div
+              className="blob-4 absolute top-1/2 right-20 h-72 w-72 rounded-[50%_50%_40%_60%/40%_60%_50%_50%]"
+              style={{ backgroundColor: '#f4a261', opacity: 0.3 }}
+            />
+            {/* イエロー - 中央 */}
+            <div
+              className="blob-5 absolute top-1/3 left-1/2 h-64 w-64 rounded-full"
+              style={{ backgroundColor: '#ffc857', opacity: 0.25 }}
             />
           </div>
 
           {/* ヘッダー */}
-          <header className="sticky top-0 z-40 backdrop-blur bg-bg/80 border-b border-[--color-line]">
-            <nav className="mx-auto max-w-6xl px-4 h-16 flex items-center justify-between">
-              <a href="/" className="font-semibold tracking-wide">
+          <header className="sticky top-0 z-40 backdrop-blur-md bg-bg/70">
+            <nav className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
+              <a href="/" className="text-lg font-bold tracking-tight hover:text-[--color-accent] transition">
                 nanjakorewa
               </a>
-              <div className="flex items-center gap-6 text-sm">
-                <a href="../projects" className="opacity-80 hover:opacity-100">
+              <div className="flex items-center gap-8 text-sm font-medium">
+                <a href="../projects" className="text-[--color-muted] hover:text-[--color-ink] transition">
                   Projects
                 </a>
-                <a href="../about" className="opacity-80 hover:opacity-100">
+                <a href="../about" className="text-[--color-muted] hover:text-[--color-ink] transition">
                   About
                 </a>
-                <a href="../contact" className="opacity-80 hover:opacity-100">
+                <a href="../contact" className="text-[--color-muted] hover:text-[--color-ink] transition">
                   Contact
                 </a>
                 <ThemeToggle />
@@ -63,7 +79,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main className="mx-auto max-w-6xl px-4 py-12">{children}</main>
 
           {/* フッター */}
-          <footer className="border-t border-[--color-line] py-10 text-center text-sm opacity-70">
+          <footer className="py-12 text-center text-sm text-[--color-muted]">
             © {new Date().getFullYear()} nanjakorewa ·{' '}
             <a className="a-like" href="/contact">
               Get in touch
