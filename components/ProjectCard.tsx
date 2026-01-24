@@ -34,21 +34,15 @@ export function ProjectCard({ project }: { project: Project }) {
       ref={ref}
       href={project.href}
       onPointerMove={onPointerMove}
-      className="group block bg-white dark:bg-[--color-card] rounded-2xl border border-[#eee] dark:border-[--color-line]/30 p-6 relative overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-black/5 hover:-translate-y-1"
+      className="group block bg-[--color-card] rounded-2xl border border-[--color-line]/40 p-5 relative overflow-hidden transition-all duration-300 ease-out hover:shadow-lg hover:shadow-black/8 dark:hover:shadow-black/20 hover:-translate-y-0.5 hover:border-[--color-accent]/30"
     >
-      {/* グラデーションアクセント（上部） */}
-      <div
-        aria-hidden
-        className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#3d7a9e] via-[#ffc857] to-[#e85d75] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-      />
-
       {/* 画像エリア */}
-      <div className="aspect-[4/3] rounded-xl bg-[#f5f5f5] dark:bg-[--color-line]/20 mb-5 overflow-hidden">
+      <div className="aspect-[4/3] rounded-xl bg-[--color-line]/20 mb-4 overflow-hidden">
         {project.image ? (
           <img
             src={withBasePath(project.image)}
             alt=""
-            className="w-full h-full object-cover group-hover:scale-107 transition-transform duration-700 ease-out"
+            className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
           />
         ) : (
           <div className="w-full h-full grid place-items-center text-sm text-[--color-muted]">
@@ -58,11 +52,11 @@ export function ProjectCard({ project }: { project: Project }) {
       </div>
 
       {/* タグ */}
-      <div className="flex gap-2 flex-wrap mb-3">
+      <div className="flex gap-1.5 flex-wrap mb-3">
         {project.tags.map((t) => (
           <span
             key={t}
-            className="text-xs px-3 py-1 rounded-full bg-[#f5f5f5] dark:bg-[--color-line]/30 text-[--color-muted] font-medium"
+            className="text-xs px-2.5 py-0.5 rounded-full bg-[--color-line]/40 text-[--color-muted]"
           >
             {t}
           </span>
@@ -70,7 +64,7 @@ export function ProjectCard({ project }: { project: Project }) {
       </div>
 
       {/* タイトル */}
-      <h3 className="text-lg font-bold text-[--color-ink] group-hover:text-[--color-accent] transition-colors duration-300 mb-2">
+      <h3 className="text-base font-bold text-[--color-ink] group-hover:text-[--color-accent] transition-colors duration-200 mb-1.5 line-clamp-1">
         {project.title}
       </h3>
 
@@ -78,9 +72,9 @@ export function ProjectCard({ project }: { project: Project }) {
       <p className="text-sm text-[--color-muted] leading-relaxed line-clamp-2">{project.description}</p>
 
       {/* 矢印アイコン */}
-      <div className="mt-4 flex items-center text-[--color-accent] text-sm font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-0 group-hover:translate-x-1">
-        View Project
-        <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="mt-3 flex items-center text-[--color-accent] text-xs font-medium opacity-0 group-hover:opacity-100 transition-all duration-200 group-hover:translate-x-0.5">
+        <span>View</span>
+        <svg className="w-3.5 h-3.5 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </svg>
       </div>

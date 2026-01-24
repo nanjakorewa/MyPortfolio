@@ -3,7 +3,8 @@
     "allow": [
       "Bash(pnpm install:*)",
       "Bash(pnpm dev)",
-      "WebFetch(domain:gggggggg.jp)"
+      "WebFetch(domain:gggggggg.jp)",
+      "WebFetch(domain:www.tickcounter.com)"
     ]
   }
 }

@@ -31,8 +31,8 @@ function Tabs({ active }: { active: 'all' | CatKey }) {
           className={[
             'px-4 py-2 rounded-full text-sm font-medium transition-all',
             active === t.key
-              ? 'bg-[--color-accent] text-white shadow-md shadow-[--color-accent]/20'
-              : 'bg-[--color-line]/30 text-[--color-muted] hover:bg-[--color-line]/50 hover:text-[--color-ink]',
+              ? 'bg-[--color-ink] text-[--color-card]'
+              : 'bg-[--color-card] border border-[--color-line]/50 text-[--color-ink] hover:border-[--color-accent]/50 hover:text-[--color-accent]',
           ].join(' ')}
         >
           {t.label}
