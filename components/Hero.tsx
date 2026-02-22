@@ -23,18 +23,18 @@
         </div>
         <ul className="flex flex-wrap gap-2 text-xs">
           {['Next.js', 'TypeScript', 'Tailwind', 'Python', 'MLflow', 'AWS'].map((s) => (
-            <li key={s} className="px-3 py-1.5 rounded-full bg-[--color-line]/40 text-[--color-muted]">
+            <li key={s} className="px-3 py-1.5 rounded bg-[--color-line]/40 text-[--color-muted]">
               {s}
             </li>
           ))}
         </ul>
       </div>
-      <div className="rounded-3xl bg-card/60 backdrop-blur-sm p-6 border border-[--color-line]/50 relative overflow-hidden group">
+      <div className="rounded bg-card/60 backdrop-blur-sm p-6 border border-[--color-line]/50 relative overflow-hidden group">
         <div
-          className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-[--color-accent-3]/20 via-[--color-accent-5]/20 to-[--color-accent-2]/20 blur-3xl opacity-60"
+          className="absolute -inset-4 rounded bg-gradient-to-br from-[--color-accent-3]/20 via-[--color-accent-5]/20 to-[--color-accent-2]/20 blur-3xl opacity-60"
           aria-hidden
         />
-        <div className="relative aspect-video rounded-2xl bg-gradient-to-br from-[--color-line]/40 to-[--color-line]/20 grid place-items-center text-[--color-muted]">
+        <div className="relative aspect-video rounded bg-gradient-to-br from-[--color-line]/40 to-[--color-line]/20 grid place-items-center text-[--color-muted]">
           Showcase Image
         </div>
         <div className="mt-4 text-sm text-[--color-muted]">最近の案件: テスト</div>

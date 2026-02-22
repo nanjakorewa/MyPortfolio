@@ -1,6 +1,7 @@
 ﻿import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Link from 'next/link'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import ThemeToggle from '@/components/ThemeToggle'
 
@@ -18,6 +19,9 @@ export const metadata: Metadata = {
     type: 'website',
   },
   icons: [{ rel: 'icon', url: '/favicon.ico' }],
+  verification: {
+    google: 'gFpHz2UyzCSqiou1OnhvT-9U0hsWL-nANiWmjzgm9M4',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -57,19 +61,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {/* ヘッダー */}
           <header className="sticky top-0 z-40 backdrop-blur-md bg-bg/70">
             <nav className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
-              <a href="/" className="text-lg font-bold tracking-tight hover:text-[--color-accent] transition">
+              <Link href="/" className="text-lg font-bold tracking-tight hover:text-[--color-accent] transition">
                 nanjakorewa
-              </a>
+              </Link>
               <div className="flex items-center gap-8 text-sm font-medium">
-                <a href="../projects" className="text-[--color-muted] hover:text-[--color-ink] transition">
+                <Link href="/projects" className="text-[--color-muted] hover:text-[--color-ink] transition">
                   Projects
-                </a>
-                <a href="../about" className="text-[--color-muted] hover:text-[--color-ink] transition">
+                </Link>
+                <Link href="/about" className="text-[--color-muted] hover:text-[--color-ink] transition">
                   About
-                </a>
-                <a href="../contact" className="text-[--color-muted] hover:text-[--color-ink] transition">
+                </Link>
+                <Link href="/contact" className="text-[--color-muted] hover:text-[--color-ink] transition">
                   Contact
-                </a>
+                </Link>
                 <ThemeToggle />
               </div>
             </nav>
@@ -81,9 +85,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {/* フッター */}
           <footer className="py-12 text-center text-sm text-[--color-muted]">
             © {new Date().getFullYear()} nanjakorewa ·{' '}
-            <a className="a-like" href="/contact">
+            <Link className="a-like" href="/contact">
               Get in touch
-            </a>
+            </Link>
           </footer>
         </ThemeProvider>
       </body>

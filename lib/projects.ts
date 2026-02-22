@@ -2,6 +2,30 @@
 
 export const projects: Project[] = [
   {
+    title: "N's Webtools",
+    description: 'ブラウザですぐ動く便利ツールを集めたウェブサイト。',
+    href: 'https://nanja-webtools.pages.dev/',
+    tags: ['Web', 'Tools'],
+    category: 'web',
+    image: '/thumbnails/webtools.svg',
+  },
+  {
+    title: 'Nanja Recipe',
+    description: '料理とお弁当のログ。',
+    href: 'https://nanja-recipe.pages.dev/',
+    tags: ['Web', 'Lifestyle'],
+    category: 'web',
+    image: '/thumbnails/recipe.svg',
+  },
+  {
+    title: '公用文チェッカー',
+    description: '「公用文作成の要領」に基づく日本語文章チェックツール。',
+    href: 'https://koyobun-checker.pages.dev/',
+    tags: ['Web', 'NLP', 'Tools'],
+    category: 'web',
+    image: '/thumbnails/koyobun.svg',
+  },
+  {
     title: 'GeoGuessrのめも',
     description: '2023年はじめから不定期に更新しているジオゲッサーのプレイログです。',
     href: 'https://geopinning.space/rule/',

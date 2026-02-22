@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" fill="none">
+  <rect width="800" height="600" fill="#f7f7f5"/>
+  <rect x="120" y="80" width="560" height="440" rx="4" fill="#fff" stroke="#e8e8e4" stroke-width="2"/>
+  <rect x="160" y="130" width="360" height="28" rx="4" fill="#3d7a9e" opacity="0.15"/>
+  <text x="340" y="150" text-anchor="middle" fill="#3d7a9e" font-family="system-ui" font-size="16" font-weight="bold">公用文チェッカー</text>
+  <rect x="160" y="190" width="480" height="160" rx="4" fill="#fafafa" stroke="#e8e8e4" stroke-width="1"/>
+  <text x="180" y="218" fill="#2d3748" font-family="monospace" font-size="14">この文章は、公用文の作成要領に</text>
+  <text x="180" y="242" fill="#2d3748" font-family="monospace" font-size="14">基づいてチェックされます。</text>
+  <text x="180" y="270" fill="#2d3748" font-family="monospace" font-size="14">誤りがある場合は</text>
+  <text x="370" y="270" fill="#e85d75" font-family="monospace" font-size="14">赤色</text>
+  <text x="410" y="270" fill="#2d3748" font-family="monospace" font-size="14">で表示</text>
+  <text x="180" y="294" fill="#2d3748" font-family="monospace" font-size="14">されます。</text>
+  <rect x="160" y="370" width="480" height="40" rx="4" fill="#b8d86b" opacity="0.15" stroke="#b8d86b" stroke-width="1"/>
+  <text x="190" y="395" fill="#4a7a2e" font-family="system-ui" font-size="13">✓ 「基づいて」→ 正しい表記です</text>
+  <rect x="160" y="420" width="480" height="40" rx="4" fill="#e85d75" opacity="0.1" stroke="#e85d75" stroke-width="1"/>
+  <text x="190" y="445" fill="#c0392b" font-family="system-ui" font-size="13">⚠ 「おこなう」→「行う」を推奨</text>
+  <rect x="540" y="130" width="100" height="28" rx="4" fill="#3d7a9e"/>
+  <text x="590" y="149" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="13" font-weight="bold">チェック</text>
+  <text x="400" y="550" text-anchor="middle" fill="#718096" font-family="system-ui" font-size="20" font-weight="bold">公用文チェッカー</text>
+</svg>
