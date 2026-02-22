@@ -15,7 +15,7 @@ export function ProjectCard({ project }: { project: Project }) {
       href={project.href}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block bg-[--color-card] rounded border border-[--color-line]/40 p-5 relative overflow-hidden transition-[transform,box-shadow,border-color] duration-300 ease-out hover:shadow-lg hover:shadow-black/8 dark:hover:shadow-black/20 hover:-translate-y-0.5 hover:border-[--color-accent]/30"
+      className="group block bg-[--color-card] rounded border border-[--color-line]/40 p-5 relative overflow-hidden hover:bg-[--color-accent]/5 hover:border-[--color-accent]/30"
     >
       {/* 画像エリア */}
       <div className="aspect-[4/3] rounded bg-[--color-line]/20 mb-4 overflow-hidden">
@@ -23,7 +23,7 @@ export function ProjectCard({ project }: { project: Project }) {
           <img
             src={withBasePath(project.image)}
             alt=""
-            className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+            className="w-full h-full object-cover"
           />
         ) : (
           <div className="w-full h-full grid place-items-center text-sm text-[--color-muted]">
@@ -53,7 +53,7 @@ export function ProjectCard({ project }: { project: Project }) {
       <p className="text-sm text-[--color-muted] leading-relaxed line-clamp-2">{project.description}</p>
 
       {/* 矢印アイコン */}
-      <div className="mt-3 flex items-center text-[--color-accent] text-xs font-medium opacity-0 group-hover:opacity-100 transition-[opacity,transform] duration-200 group-hover:translate-x-0.5">
+      <div className="mt-3 flex items-center text-[--color-accent] text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-200">
         <span>View</span>
         <svg className="w-3.5 h-3.5 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
