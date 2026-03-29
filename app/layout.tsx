@@ -2,19 +2,22 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
+import Script from 'next/script'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import ThemeToggle from '@/components/ThemeToggle'
 
 const inter = Inter({ subsets: ['latin'] })
 
+const CANONICAL_ORIGIN = 'https://nanja.space'
+
 export const metadata: Metadata = {
   title: 'Portfolio | nanjakorewa',
   description: 'Developer & Designer Portfolio',
-  metadataBase: new URL('https://nanjakorewa.github.io/MyPortfolio/projects/'),
+  metadataBase: new URL(`${CANONICAL_ORIGIN}/MyPortfolio/`),
   openGraph: {
     title: 'Portfolio | nanjakorewa',
     description: 'Developer & Designer Portfolio',
-    url: 'https://nanjakorewa.github.io/MyPortfolio/projects/',
+    url: `${CANONICAL_ORIGIN}/MyPortfolio/`,
     siteName: 'Portfolio',
     type: 'website',
   },
@@ -27,6 +30,19 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja" suppressHydrationWarning>
+      <head>
+        {/* GitHub Pages → nanja.space 即時リダイレクト */}
+        <Script id="gh-pages-redirect" strategy="beforeInteractive">
+          {`
+            if (window.location.hostname === 'nanjakorewa.github.io') {
+              window.location.replace('${CANONICAL_ORIGIN}' + window.location.pathname + window.location.search + window.location.hash);
+            }
+          `}
+        </Script>
+        <noscript>
+          <meta httpEquiv="refresh" content={`0;url=${CANONICAL_ORIGIN}/MyPortfolio/`} />
+        </noscript>
+      </head>
       <body className={`${inter.className} min-h-screen relative overflow-x-hidden`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {/* 背景ブロブ装飾 */}
