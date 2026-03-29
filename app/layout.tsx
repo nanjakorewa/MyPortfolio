@@ -68,6 +68,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Link href="/projects" className="text-[--color-muted] hover:text-[--color-ink] transition">
                   Projects
                 </Link>
+                <Link href="/extensions" className="text-[--color-muted] hover:text-[--color-ink] transition">
+                  Extensions
+                </Link>
                 <Link href="/about" className="text-[--color-muted] hover:text-[--color-ink] transition">
                   About
                 </Link>
